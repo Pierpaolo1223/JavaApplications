@@ -1,4 +1,4 @@
-Here comes some exercises based principally on asynchronous and reactive programming, microservices applications, Docker, Prometheus and 
+Here comes some exercises based principally on asynchronous and reactive programming, microservices, Docker, Prometheus and 
 Spring Security integration with JWT token and Postgres DB.
 
 The "microservices-application" application is an exercise that implements and api gateway, an Eureka service (service provider), auth service (authentication microservice)
