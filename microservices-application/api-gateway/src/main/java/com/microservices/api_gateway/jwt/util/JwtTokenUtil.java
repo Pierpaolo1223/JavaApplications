@@ -12,7 +12,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtTokenUtil {
-	private static final String SECRET_KEY; // Replace with your actual secret key
+	private static final String SECRET_KEY = "my-secret-key"; // Replace with your actual secret key
 	private static final long EXPIRATION_TIME = 600000; 
 
 	/*public String generateToken(UserDetails userDetails) {
