@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: HELLO-WORLD-SERVICE
+          uri: lb://HELLO-WORLD-SERVICE
+          predicates:
+            - Path=/hello/**
+          filters:
+           - AuthenticationFilter
+        - id: TEST-SERVICE
+          uri: lb://TEST-SERVICE
+          predicates:
+            - Path=/test/**
+          filters:
+           - AuthenticationFilter
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
+            
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

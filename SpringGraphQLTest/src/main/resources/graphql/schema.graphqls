@@ -1,0 +1,23 @@
+type Query {
+	findAllUsers: [User]
+	findUserByUsername(username: String): User
+}
+
+type User {
+	idUser: ID
+	password: String
+	surname: String
+	username: String
+}
+
+input UserCommand {
+	password: String
+	surname: String
+	username: String
+}
+
+type Mutation {
+	addUser(userCommand: UserCommand!): User! 
+	deleteUser(idUser: ID!): Boolean
+	updateUser(idUser: ID!,userCommand: UserCommand!):User
+}

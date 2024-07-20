@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+   springsecuritytest:
+      image: springsecuritytest:latest
+      container_name: springsecuritytest
+      ports:
+        - "8080:8080"
+      depends_on:
+        - postgresdb
+      environment:
+         - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/test
+         - SPRING_DATASOURCE_USERNAME=postgres
+         - SPRING_DATASOURCE_PASSWORD=root
+         - SPRING.DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+         
+   postgresdb:
+      image: postgres:alpine3.20
+      environment:
+         POSTGRES_DB: test
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: root
+      ports:
+        - "5432:5432"

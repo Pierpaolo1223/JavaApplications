@@ -1,0 +1,34 @@
+version: '3'
+services:
+   eureka-service:
+       image: eureka-service:latest
+       container_name: eureka-service
+       ports:
+         - "8761:8761"
+       environment:
+         - SPRING_PROFILES_ACTIVE=docker
+         
+   api-gateway:
+       image: api-gateway:latest
+       container_name: api-gateway
+       ports:
+         -  "8080:8080"
+       depends_on:
+         - eureka-service
+     
+   hello-world-service:
+       image: hello-world-service:latest
+       container_name: hello-world-service
+       ports:
+         -  "8081:8081"
+       depends_on:
+         - eureka-service
+         
+   test-service:
+       image: test-service:latest
+       container_name: test-service
+       ports:
+         -  "8082:8082"
+       depends_on:
+         - eureka-service
+       
